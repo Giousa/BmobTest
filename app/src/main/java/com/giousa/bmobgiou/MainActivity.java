@@ -47,25 +47,25 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_create:
-                Log.d(TAG,"添加数据");
                 createData();
                 break;
             case R.id.btn_query:
-                Log.d(TAG,"查找数据");
                 queryData();
                 break;
             case R.id.btn_update:
-                Log.d(TAG,"更新数据");
                 updateData();
                 break;
             case R.id.btn_delete:
-                Log.d(TAG,"删除数据");
                 deleteData();
                 break;
         }
     }
 
     private int count = 0;
+
+    /**
+     * 添加数据
+     */
     private void createData() {
         Student student = new Student();
         student.setName("灵梦"+count);
@@ -88,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
         count++;
     }
 
+    /**
+     * 查找数据
+     */
     private void queryData() {
         BmobQuery<Student> query = new BmobQuery<>();
         query.addWhereEqualTo("name", "灵梦1");
@@ -107,6 +110,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     *
+     * 更新数据
+     *
+     *
      * 备注：目前更新数据，只能使用objectId，还不能通过判断条件来更新。
      *      不过，在添加数据的时候，因为会返回一个objectId，可以先通过查询
      *      获取到对应数据的objectId后，再执行更新和删除
@@ -129,6 +136,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * 删除数据
+     */
     private void deleteData() {
         Student p2 = new Student();
         p2.setObjectId(mObjectId);
